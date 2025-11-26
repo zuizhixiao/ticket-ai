@@ -2,7 +2,7 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { GeneratedTicketInfo } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: "AIzaSyADepeW19uFKdUx6pzmSBstDwWMCZjiNEU" });
 
 /**
  * Analyzes a movie poster image to extract or generate ticket details.
