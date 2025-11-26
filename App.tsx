@@ -1,17 +1,10 @@
-
 import React, { useState, useCallback } from 'react';
 import { TicketPreview } from './components/TicketPreview';
 import { TicketForm } from './components/TicketForm';
 import { TicketData, DEFAULT_TICKET } from './types';
 import { analyzePoster } from './services/geminiService';
 import { Ticket, Download, Sparkles, Loader2, Share2, X } from 'lucide-react';
-
-// Add type definition for global html2canvas
-declare global {
-  interface Window {
-    html2canvas: any;
-  }
-}
+import html2canvas from 'html2canvas';
 
 const App: React.FC = () => {
   const [ticketData, setTicketData] = useState<TicketData>(DEFAULT_TICKET);
@@ -68,17 +61,12 @@ const App: React.FC = () => {
   }, []);
 
   const handleGenerateImage = async () => {
-    if (!window.html2canvas) {
-        console.error("html2canvas not loaded");
-        return;
-    }
-
     setIsGenerating(true);
     try {
         // We select the inner ID which has the full 375x667 resolution
         const element = document.getElementById('ticket-card');
         if (element) {
-            const canvas = await window.html2canvas(element, {
+            const canvas = await html2canvas(element, {
                 scale: 3, // Increased scale for sharpness
                 backgroundColor: null,
                 useCORS: true,
