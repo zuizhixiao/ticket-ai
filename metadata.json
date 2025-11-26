@@ -1,0 +1,5 @@
+{
+  "name": "CineStub - AI Movie Ticket Generator",
+  "description": "A creative tool to generate custom movie ticket stubs using uploaded posters. Features AI-powered auto-fill to detect movie details from images using Gemini 2.5 Flash.",
+  "requestFramePermissions": []
+}
